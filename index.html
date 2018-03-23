@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>reveal-md</title>
+  <title>Redux Basics by Sia</title>
   <link rel="stylesheet" href="./css/reveal.css">
   <link rel="stylesheet" href="./css/theme/custom.css" id="theme">
   <link rel="stylesheet" href="./css/highlight/zenburn.css">
@@ -15,8 +15,17 @@
 
   <div class="reveal">
     <div class="slides">
-      <section data-markdown>
-        <script type="text/template">
+      <section>
+        <section data-markdown>
+          <script type="text/template">
+
+# Redux Basics
+## Sia Karamalegos
+
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 # Redux
 
@@ -24,9 +33,10 @@ Redux is a predictable state container for JavaScript apps.
 
 <aside class="notes"><p>Web applications have become more complex over time. As developers, we must manage so much more in state than before, including temporary form data, server or API responses for persisted data, and cached data... which route we are currently on as well as the browser history of routes. If you add UX state on top of that - loading data spinners, pagination, modal active/inactive state, tab selections, etc. - you can see how state can quickly become unmanageable and bug-prone. Not only do we have to manage real-time updates to state but asynchronous ones as well! How do you fix it when something goes wrong?!?!</p>
 </aside></script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+
 ## Redux helps write apps that...
 
 - Behave consistently,
@@ -35,19 +45,22 @@ Redux is a predictable state container for JavaScript apps.
 
 <aside class="notes"><p>enviroments = (client, server, and native). You can use Redux together with React, or with any other view library. It is tiny (2kB, including dependencies).</p>
 </aside></script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+
 ## Redux alternatives
 
 - Local state (no package)
 - MobX
 - Apollo-link-state
 - Other stuff
+
 </script>
-      </section>
-      <section data-markdown>
-        <script type="text/template">
+        </section>
+        <section data-markdown>
+          <script type="text/template">
+
 ## What are we learning about?
 
 ### Redux Basics
@@ -60,6 +73,7 @@ Redux is a predictable state container for JavaScript apps.
 - More on reducers
 - Subscribing to the store
 </script>
+        </section>
       </section>
       <section>
         <section data-markdown>

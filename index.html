@@ -1,25 +1,32 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>reveal-md</title>
-        <link rel="stylesheet" href="./css/reveal.css">
-        <link rel="stylesheet" href="./_assets/style.css" id="theme">
-        <link rel="stylesheet" href="./css/highlight/zenburn.css">
-        <link rel="stylesheet" href="./css/print/paper.css" type="text/css" media="print">
 
-    </head>
-    <body>
+<head>
+  <meta charset="utf-8">
+  <title>reveal-md</title>
+  <link rel="stylesheet" href="./css/reveal.css">
+  <link rel="stylesheet" href="./css/theme/custom.css" id="theme">
+  <link rel="stylesheet" href="./css/highlight/zenburn.css">
+  <link rel="stylesheet" href="./css/print/paper.css" type="text/css" media="print">
 
-        <div class="reveal">
-            <div class="slides"><section  data-markdown><script type="text/template">
+</head>
+
+<body>
+
+  <div class="reveal">
+    <div class="slides">
+      <section data-markdown>
+        <script type="text/template">
 
 # Redux
 
 Redux is a predictable state container for JavaScript apps.
 
 <aside class="notes"><p>Web applications have become more complex over time. As developers, we must manage so much more in state than before, including temporary form data, server or API responses for persisted data, and cached data... which route we are currently on as well as the browser history of routes. If you add UX state on top of that - loading data spinners, pagination, modal active/inactive state, tab selections, etc. - you can see how state can quickly become unmanageable and bug-prone. Not only do we have to manage real-time updates to state but asynchronous ones as well! How do you fix it when something goes wrong?!?!</p>
-</aside></script></section><section  data-markdown><script type="text/template">
+</aside></script>
+      </section>
+      <section data-markdown>
+        <script type="text/template">
 ## Redux helps write apps that...
 
 - Behave consistently,
@@ -27,14 +34,20 @@ Redux is a predictable state container for JavaScript apps.
 - Are easy to test.
 
 <aside class="notes"><p>enviroments = (client, server, and native). You can use Redux together with React, or with any other view library. It is tiny (2kB, including dependencies).</p>
-</aside></script></section><section  data-markdown><script type="text/template">
+</aside></script>
+      </section>
+      <section data-markdown>
+        <script type="text/template">
 ## Redux alternatives
 
 - Local state (no package)
 - MobX
 - Apollo-link-state
 - Other stuff
-</script></section><section  data-markdown><script type="text/template">
+</script>
+      </section>
+      <section data-markdown>
+        <script type="text/template">
 ## What are we learning about?
 
 ### Redux Basics
@@ -46,10 +59,17 @@ Redux is a predictable state container for JavaScript apps.
 - Action creators and constants
 - More on reducers
 - Subscribing to the store
-</script></section><section ><section data-markdown><script type="text/template">
+</script>
+      </section>
+      <section>
+        <section data-markdown>
+          <script type="text/template">
 # Primary principles
 
-</script></section><section data-markdown><script type="text/template">
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ## I. Global State
 
@@ -57,7 +77,10 @@ One of the primary principles of Redux is that there should be one store, or sta
 
 Usually, this state is represented as a plain object, but it can be any data type.
 
-</script></section><section data-markdown><script type="text/template">
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ```javascript
 {
@@ -77,7 +100,10 @@ Usually, this state is represented as a plain object, but it can be any data typ
 }
 ```
 
-</script></section><section data-markdown><script type="text/template">
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ## II. Data always flows one-way
 
@@ -88,17 +114,28 @@ To update the state:
 3. The reducer listens for the actions and returns a new state to the store.
 
 <aside class="notes"><p>Redux Thunk middleware allows you to write action creators that return a function instead of an action. The thunk can be used to delay the dispatch of an action, or to dispatch only if a certain condition is met. The inner function receives the store methods dispatch and getState as parameters.</p>
-</aside></script></section><section data-markdown><script type="text/template">
+</aside></script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 <img style="border:0;background:inherit;box-shadow:none;" src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/redux_dispatch.png" alt="Dispatching in Redux" width="80%">
 
 <aside class="notes"><p>Getting a solid foundation in the core process and patterns of Redux is critical to understanding BEFORE we incorporate it into our React applications. We have a single source of truth in our 1 store that holds our application state. From our store, we dispatch action objects that describe the event and pass any data required. Then our reducers listen for the action and send a new state to the store using pure functions.</p>
-</aside></script></section></section><section ><section data-markdown><script type="text/template">
+</aside></script>
+        </section>
+      </section>
+      <section>
+        <section data-markdown>
+          <script type="text/template">
 # Actions and Reducers
 
 <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/greedy_pup.gif" alt="Greedy puppy stealing other dogs' treats animated gif">
 
-</script></section><section data-markdown><script type="text/template">
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ## Actions
 
@@ -110,7 +147,10 @@ Actions are **objects** that describe the event that is happening.
 - Sometimes have `data` or `payload`, `error`, and/or `meta`
 
 <aside class="notes"><p>Flux Standard Actions</p>
-</aside></script></section><section data-markdown><script type="text/template">
+</aside></script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ## Action Examples
 
@@ -131,7 +171,10 @@ Actions are **objects** that describe the event that is happening.
 }
 ```
 
-</script></section><section data-markdown><script type="text/template">
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ## Reducers
 
@@ -141,7 +184,10 @@ Actions are **objects** that describe the event that is happening.
 <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/dog_shrinking.gif" alt="Dog shrinking machine animated gif">
 
 <aside class="notes"><p>which &quot;applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single value&quot;. If you think about a reducer in Redux, it is returning the accumulation of the state based on all the previous actions. Each action is analogous to one cycle of the <code>Array.prototype.reduce()</code> function.</p>
-</aside></script></section><section data-markdown><script type="text/template">
+</aside></script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ## Reducer Example
 
@@ -161,7 +207,10 @@ function numberReducer(state = {myNumber: 0}, action) {
 ```
 
 <aside class="notes"><p>walk through this - 2 args, state and action - then switch/case for each action option...</p>
-</aside></script></section><section data-markdown><script type="text/template">
+</aside></script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ## Hello, Redux!
 
@@ -186,10 +235,18 @@ function myReducer(state, action) {
 ```
 
 <aside class="notes"><p>Don&#39;t forget the default cause. Why did I add the puppies the way I did? Pure functions...</p>
-</aside></script></section></section><section ><section data-markdown><script type="text/template">
+</aside></script>
+        </section>
+      </section>
+      <section>
+        <section data-markdown>
+          <script type="text/template">
 # The store and dispatching
 
-</script></section><section data-markdown><script type="text/template">
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ## The Store
 
@@ -206,7 +263,10 @@ console.log('store state', store.getState())
 ```
 
 <aside class="notes"><p>this is the first time we&#39;ve needed the Redux library thus far.</p>
-</aside></script></section><section data-markdown><script type="text/template">
+</aside></script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ## Dispatching Actions
 
@@ -226,7 +286,10 @@ store.dispatch({
 console.log('new state', store.getState())
 ```
 
-</script></section><section data-markdown><script type="text/template">
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ## You Do:
 
@@ -247,13 +310,21 @@ store.dispatch(action)
 ```
 
 <aside class="notes"><p>What else will we need here? <code>createStore</code> and the <code>puppies</code> reducer. What was a pain here? Matching up the action to what we said in our reducer. So now we have 2 things to follow up on: pure functions and action creators.</p>
-</aside></script></section></section><section ><section data-markdown><script type="text/template">
+</aside></script>
+        </section>
+      </section>
+      <section>
+        <section data-markdown>
+          <script type="text/template">
 # Pure Functions
 
 <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/puppy_detour.gif" alt="Funny puppy taking a detour off a porch into a bush gif">
 
 <aside class="notes"><p>You are probably familiar with object-oriented programming in JavaScript or Ruby. Since Redux relies heavily on some functional programming concepts, we will take a quick detour to familiarize ourselves with them.</p>
-</aside></script></section><section data-markdown><script type="text/template">
+</aside></script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ## Pure Functions
 
@@ -263,7 +334,10 @@ store.dispatch(action)
 - If you change a property of an object inside a function, it will change outside of the function as well which is a **side effect**!
 
 <aside class="notes"><p>Primitives = strings, numbers, and booleans</p>
-</aside></script></section><section data-markdown><script type="text/template">
+</aside></script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ### Impure Function Example
 
@@ -292,7 +366,10 @@ console.log(firstPuppy.name)
 ```
 
 <aside class="notes"><p>what&#39;s the name of the second puppy? Bitey. What&#39;s the name of the first puppy? Oops.</p>
-</aside></script></section><section data-markdown><script type="text/template">
+</aside></script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ### Refactor to Pure Function
 
@@ -314,7 +391,10 @@ console.log(secondPuppy.name)
 ```
 
 <aside class="notes"><p>The Object.assign() method is used to copy the values of all enumerable own properties from one or more source objects to a target object. It will return the target object.</p>
-</aside></script></section><section data-markdown><script type="text/template">
+</aside></script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ### Refactor to Pure Function
 
@@ -339,7 +419,10 @@ console.log(secondPuppy.name)
 ```
 
 <aside class="notes"><p>Spread syntax allows an iterable such as an array expression or string to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected, or an object expression to be expanded in places where zero or more key-value pairs (for object literals) are expected. The spread operator is only available in ES2015, so for this code to work, you will need Babel. Conveniently, Babel offers a <a href="https://babeljs.io/repl/">repl here</a>.</p>
-</aside></script></section><section data-markdown><script type="text/template">
+</aside></script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ### Arrays
 
@@ -365,7 +448,10 @@ console.log(fifthPuppy.chewedItems)
 // Changes previous puppy. Oops!
 ```
 
-</script></section><section data-markdown><script type="text/template">
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ### Arrays
 
@@ -393,17 +479,28 @@ console.log(seventhPuppy.chewedItems)
 // Doesn't change previous puppy! Woot!
 ```
 
-</script></section><section data-markdown><script type="text/template">
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ### Why Is This Important?
 
 - Without pure functions, multiple asynchronous actions dispatched close together could cause a a [race condition](https://en.wikipedia.org/wiki/Race_condition).
 - With pure functions, each request, or function, is completely independent of the other. Order no longer matters.
 - Thus, pure functions can greatly simplify our code and make debugging easier.
-</script></section></section><section ><section data-markdown><script type="text/template">
+</script>
+        </section>
+      </section>
+      <section>
+        <section data-markdown>
+          <script type="text/template">
 # Action Creators and Constants
 
-</script></section><section data-markdown><script type="text/template">
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ## Action Creators
 
@@ -432,7 +529,10 @@ store.dispatch(createPuppy({
 ```
 
 <aside class="notes"><p>The benefit is that now instead of re-typing the full object with the type property, we can just send the data needed for the puppy. In addition, they let us pull additional logic out of components, which is easier to maintain and change in applications under heavy development. We will see this later when we learn async actions.</p>
-</aside></script></section><section data-markdown><script type="text/template">
+</aside></script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ## Action Types as Constants
 
@@ -454,7 +554,10 @@ function adoptPuppy(id) {
 ```
 
 <aside class="notes"><p>You then export those constants for reuse in your reducers. Otherwise, you can sometimes fail silently if you type an action type.</p>
-</aside></script></section><section data-markdown><script type="text/template">
+</aside></script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ## You Do
 
@@ -474,10 +577,18 @@ export function myAction(data) {
 ```
 
 <aside class="notes"><p>We&#39;ll need to export and import a lot of stuff now.</p>
-</aside></script></section></section><section ><section data-markdown><script type="text/template">
+</aside></script>
+        </section>
+      </section>
+      <section>
+        <section data-markdown>
+          <script type="text/template">
 # More on Reducers
 
-</script></section><section data-markdown><script type="text/template">
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ## A Note on Designing State Shape
 
@@ -505,7 +616,10 @@ export function myAction(data) {
 ```
 
 <aside class="notes"><p>How would you add your availability filter to your reducer(s)? You could put it in the same reducer, or you could create a second reducer...</p>
-</aside></script></section><section data-markdown><script type="text/template">
+</aside></script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ## One Giant Reducer
 
@@ -534,7 +648,10 @@ function puppyAdoptionApp(state = initialState, action) {
 }
 ```
 
-</script></section><section data-markdown><script type="text/template">
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ## Splitting Unwieldy Reducers
 
@@ -565,7 +682,10 @@ function availabilityFilter(state = SHOW_ALL, action) {
 }
 ```
 
-</script></section><section data-markdown><script type="text/template">
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ## Combining Reducers
 
@@ -591,7 +711,10 @@ const puppiesApp = combineReducers({
 })
 ```
 
-</script></section><section data-markdown><script type="text/template">
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ## You Do:
 
@@ -612,10 +735,18 @@ const store = createStore(myReducers)
 ```
 
 <aside class="notes"><p>Notice how the state shape changes. Why is it logging every action twice?</p>
-</aside></script></section></section><section ><section data-markdown><script type="text/template">
+</aside></script>
+        </section>
+      </section>
+      <section>
+        <section data-markdown>
+          <script type="text/template">
 # Subscribing to the Store
 
-</script></section><section data-markdown><script type="text/template">
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ## Subscribing to State Updates
 
@@ -637,7 +768,10 @@ unsubscribe()
 ```
 
 <aside class="notes"><p>Since we don&#39;t have our application hooked into a front-end like React yet, it would be nice to see our updates to the store. Conveniently, Redux provides the <code>subscribe()</code> function that listens for any time an action is dispatched. The <code>subscribe()</code> function returns another function that will unregister the listener. If we wrap our dispatch calls in a subscribe and unsubscribe, we can set up logging to the console without having to manually log after each dispatch.</p>
-</aside></script></section><section data-markdown><script type="text/template">
+</aside></script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ## You Do:
 
@@ -656,10 +790,18 @@ const unsubscribe = store.subscribe(() => {
 // Unregister/cancel the listener
 unsubscribe()
 ```
-</script></section></section><section ><section data-markdown><script type="text/template">
+</script>
+        </section>
+      </section>
+      <section>
+        <section data-markdown>
+          <script type="text/template">
 # Wrapping Up
 
-</script></section><section data-markdown><script type="text/template">
+</script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ## Actions and Reducers
 
@@ -670,64 +812,71 @@ At their core, **ACTIONS** are just objects that describe an event that is happe
 The main trick with reducers is to make sure you always use **PURE FUNCTIONS**.
 
 <aside class="notes"><p>Now that we have our actions and reducers ready to go, it&#39;s time to create our store and dispatch some actions.</p>
-</aside></script></section><section data-markdown><script type="text/template">
+</aside></script>
+        </section>
+        <section data-markdown>
+          <script type="text/template">
 
 ## Data always flows one-way
 
 <img style="border:0;background:inherit;box-shadow:none;" src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/redux_dispatch.png" alt="Dispatching in Redux" width="80%">
 
 <aside class="notes"><p>Getting a solid foundation in the core process and patterns of Redux is critical to understanding BEFORE we incorporate it into our React applications. We have a single source of truth in our 1 store that holds our application state. From our store, we dispatch action objects that describe the event and pass any data required. Then our reducers listen for the action and send a new state to the store using pure functions.</p>
-</aside></script></section></section></div>
-        </div>
+</aside></script>
+        </section>
+      </section>
+    </div>
+  </div>
 
-        <script src="./lib/js/head.min.js"></script>
-        <script src="./js/reveal.js"></script>
+  <script src="./lib/js/head.min.js"></script>
+  <script src="./js/reveal.js"></script>
 
-        <script>
-            function extend() {
-              var target = {};
-              for (var i = 0; i < arguments.length; i++) {
-                var source = arguments[i];
-                for (var key in source) {
-                  if (source.hasOwnProperty(key)) {
-                    target[key] = source[key];
-                  }
-                }
-              }
-              return target;
-            }
+  <script>
+    function extend() {
+      var target = {};
+      for (var i = 0; i < arguments.length; i++) {
+        var source = arguments[i];
+        for (var key in source) {
+          if (source.hasOwnProperty(key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+      return target;
+    }
 
-            // Optional libraries used to extend on reveal.js
-            var deps = [
-              { src: './lib/js/classList.js', condition: function() { return !document.body.classList; } },
-              { src: './plugin/markdown/marked.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
-              { src: './plugin/markdown/markdown.js', condition: function() { return !!document.querySelector('[data-markdown]'); } },
-              { src: './plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-              { src: './plugin/zoom-js/zoom.js', async: true },
-              { src: './plugin/notes/notes.js', async: true },
-              { src: './plugin/math/math.js', async: true }
-            ];
+    // Optional libraries used to extend on reveal.js
+    var deps = [
+      { src: './lib/js/classList.js', condition: function () { return !document.body.classList; } },
+      { src: './plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+      { src: './plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+      { src: './plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+      { src: './plugin/zoom-js/zoom.js', async: true },
+      { src: './plugin/notes/notes.js', async: true },
+      { src: './plugin/math/math.js', async: true }
+    ];
 
-            // default options to init reveal.js
-            var defaultOptions = {
-              controls: true,
-              progress: true,
-              history: true,
-              center: true,
-              transition: 'default', // none/fade/slide/convex/concave/zoom
-              dependencies: deps
-            };
+    // default options to init reveal.js
+    var defaultOptions = {
+      controls: true,
+      progress: true,
+      history: true,
+      center: true,
+      transition: 'default', // none/fade/slide/convex/concave/zoom
+      dependencies: deps
+    };
 
-            // options from URL query string
-            var queryOptions = Reveal.getQueryHash() || {};
+    // options from URL query string
+    var queryOptions = Reveal.getQueryHash() || {};
 
-            var options = {};
-            options = extend(defaultOptions, options, queryOptions);
-        </script>
+    var options = {};
+    options = extend(defaultOptions, options, queryOptions);
+  </script>
 
 
-        <script>
-            Reveal.initialize(options);
-        </script>
-    </body>
+  <script>
+    Reveal.initialize(options);
+  </script>
+</body>
+
 </html>
